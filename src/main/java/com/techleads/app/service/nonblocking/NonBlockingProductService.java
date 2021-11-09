@@ -1,5 +1,8 @@
 package com.techleads.app.service.nonblocking;
 
+import java.time.Duration;
+import java.time.Instant;
+
 import org.springframework.stereotype.Service;
 
 import lombok.NoArgsConstructor;
@@ -12,6 +15,7 @@ public class NonBlockingProductService {
 
 	public void productService(String id) {
 
+		Instant start = Instant.now();
 //		Runnable productInfoRunnable = new ProductInfoRunnable(id);
 		
 
@@ -40,6 +44,9 @@ public class NonBlockingProductService {
 		System.out.println(productInfo);
 		String reviewProudctResult = revieProductRunnable.getReviewProudctResult();
 		System.out.println(reviewProudctResult);
+		
+		Instant finish = Instant.now();
+		System.out.println("Time Elapsed in Milliseconds: "+Duration.between(start, finish).toMillis());
 
 
 	}
